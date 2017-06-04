@@ -1,0 +1,13 @@
+body {
+    overflow: hidden;
+}
+
+/*
+We style the div to be blue, but don't assign the body a background color. In normal web development this just defaults to white, however in CasparCG no color means transparent.
+*/
+.textbox {
+    background-color:navy;
+    color: white;
+    padding: 10px;
+    opacity:0;
+}
