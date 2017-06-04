@@ -1,0 +1,1 @@
+To make this template work, make sure to create a key called "zipcode" (without the quotes) in the item's settings when you add it to your CasparCG rundown.
