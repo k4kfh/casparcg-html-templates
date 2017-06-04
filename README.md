@@ -1,6 +1,8 @@
 # CasparCG HTML Templates
 Some examples and a framework to start from when developing templates for CasparCG's HTML producer.
 
+[CasparCG HTML Producer Quick Reference](http://blog.evilgeniustech.com/casparcg-html-producer-basics/)
+
 ## Getting Started
 
 It's important to note that while some of these templates can be used as finished products, this repo is more intended as a starting point for you to develop your own templates. Every creative team will have different needs, but using simple JavaScript/HTML/CSS that is familiar to many creative/web developer types, you can customize the templates to your heart's content.
@@ -20,3 +22,5 @@ To "install" these templates, simply clone this repository and drag the contents
 ## Developing Templates
 
 Some basic JavaScript/HTML/CSS knowledge is required to use these tools. If you want to learn, Codecademy is a great place to get an introduction, and W3Schools also provides excellent resources. And of course, some general computer knowledge is required as well.
+
+Bottom line: be sure to read the comments in the files, they are there to help. And it would also be helpful for you to read [this blog post](http://blog.evilgeniustech.com/casparcg-html-producer-basics/), where I explain what all the JavaScript functions CasparCG calls are for.
