@@ -3,6 +3,8 @@ Some examples and a framework to start from when developing templates for Caspar
 
 [CasparCG HTML Producer Quick Reference](http://blog.evilgeniustech.com/casparcg-html-producer-basics/)
 
+**Note: This project is a work in progress. Some templates may be unfinished or unstable. If you encounter broken templates, bugs, or other issues, please make a GitHub issue so that we know about it. And of course, pull requests welcome.**
+
 ## Getting Started
 
 It's important to note that while some of these templates can be used as finished products, this repo is more intended as a starting point for you to develop your own templates. Every creative team will have different needs, but using simple JavaScript/HTML/CSS that is familiar to many creative/web developer types, you can customize the templates to your heart's content.
