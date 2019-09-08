@@ -20,25 +20,30 @@ function update(arg) {
 weather = {
     zipcode : undefined,
     fetch : function(arg_location) {
-        $.simpleWeather(
+/*        $.simpleWeather(
             {
                 location: arg_location,
                 unit: 'f',
                 success: function(weather) {
                     //run if we successfully fetch the weather
-                    console.dir(weather)
+                    console.dir(weather) */
                     
-                    for (var i = 0; i<weather.forecast.length; i++) {
-                        $("#day" + (i+1) + " .day-title").html(weather.forecast[i].day) //set the name of the day
+                    //for (var i = 0; i<weather.forecast.length; i++) {
+                    for (var i = 0; i<7; i++) {
+                        //$("#day" + (i+1) + " .day-title").html(weather.forecast[i].day) //set the name of the day
+                        $("#day" + (i+1) + " .day-title").html(weekdayShort[i]) //set the name of the day
                         
                         //TODO: Choose the Google weather icon
-                        var code = Number(weather.forecast[i].code); //use the Yahoo weather code to pick an image
+                        //var code = Number(weather.forecast[i].code); //use the Yahoo weather code to pick an image
+                        var code = Number(Math.floor(Math.random() * 47)); //use the Yahoo weather code to pick an image
                         var imageUrl = "https://ssl.gstatic.com/onebox/weather/256/" + images[code];
                         $("#day" + (i+1) + " img").attr("src",imageUrl);
                         
                         //fetch temps
-                        $("#day" + (i+1) + " .temp-high").html(Number(weather.forecast[i].high));
-                        $("#day" + (i+1) + " .temp-low").html(Number(weather.forecast[i].low));
+                        //$("#day" + (i+1) + " .temp-high").html(Number(weather.forecast[i].high));
+                        //$("#day" + (i+1) + " .temp-low").html(Number(weather.forecast[i].low));
+                        $("#day" + (i+1) + " .temp-high").html(Number(Math.floor(Math.random() * 35)));
+                        $("#day" + (i+1) + " .temp-low").html(Number(Math.floor(Math.random() * 15)));
                     }
                     
                     //wait for the images to load, then begin the animating in
@@ -52,9 +57,9 @@ weather = {
                             $("#day6").delay(2000).fadeTo("slow", 1);
                             $("#day7").delay(2400).fadeTo("slow", 1);
                     }, 100)
-                }
+/*                }
             }
-        )
+        ) */
     },
 }
 
@@ -108,3 +113,21 @@ images = [ //matches codes from Yahoo weather to Google images
         "snow.png", //46 snow showers
         "thunderstorms.png" //47 isolated thundershowers
     ]
+
+var weekday = new Array(7);
+weekday[0] =  "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+var weekdayShort = new Array(7);
+weekdayShort[0] =  "Sun";
+weekdayShort[1] = "Mon";
+weekdayShort[2] = "Tue";
+weekdayShort[3] = "Wed";
+weekdayShort[4] = "Thur";
+weekdayShort[5] = "Fri";
+weekdayShort[6] = "Sat";
