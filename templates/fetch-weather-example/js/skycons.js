@@ -714,6 +714,9 @@
     draw: function(obj, time) {
       var canvas = obj.context.canvas;
 
+      // Force a 1:1 aspect ratio so wind animates nicely
+      canvas.height = canvas.width;
+
       if(this.resizeClear)
         canvas.width = canvas.width;
 
