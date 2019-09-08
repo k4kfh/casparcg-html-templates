@@ -11,7 +11,12 @@ function next() {
 }
 
 var json;
+var skycons;
 function update(arg) {
+skycons = new Skycons({"monochrome": false});
+
+skycons.play();
+
     json = JSON.parse(arg);
     weather.zipcode = json.zipcode;
     weather.fetch(json.zipcode)
@@ -31,12 +36,13 @@ weather = {
                     //for (var i = 0; i<weather.forecast.length; i++) {
                     for (var i = 0; i<7; i++) {
                         //$("#day" + (i+1) + " .day-title").html(weather.forecast[i].day) //set the name of the day
-                        $("#day" + (i+1) + " .day-title").html(weekdayShort[i]) //set the name of the day
                         
                         //TODO: Choose the Google weather icon
                         //var code = Number(weather.forecast[i].code); //use the Yahoo weather code to pick an image
                         var code = Number(Math.floor(Math.random() * 47)); //use the Yahoo weather code to pick an image
                         var imageUrl = "https://ssl.gstatic.com/onebox/weather/256/" + images[code];
+                        
+                        skycons.set($("#day" + (i+1) + " canvas").get(0), skyconMap[code]);
                         $("#day" + (i+1) + " img").attr("src",imageUrl);
                         
                         //fetch temps
@@ -112,6 +118,57 @@ images = [ //matches codes from Yahoo weather to Google images
         "thunderstorms.png", //45 thundershowers
         "snow.png", //46 snow showers
         "thunderstorms.png" //47 isolated thundershowers
+    ]
+
+skyconMap = [ //matches codes from Yahoo weather to Skycons
+        Skycons.WIND, //0 tornado
+        Skycons.WIND, //1 tropical storm
+        Skycons.WIND, //2 hurricane
+        Skycons.CLOUDY, //3 severe thunderstorms
+        Skycons.CLOUDY, //4 thunderstorms
+        Skycons.SNOW, //5 mixed rain and snow
+        Skycons.SLEET, //6 mixed rain and sleet
+        Skycons.SLEET, //7 mixed snow and sleet
+        Skycons.SLEET, //8 freezing drizzle
+        Skycons.RAIN, //9 drizzle
+        Skycons.SLEET, //10 freezing rain
+        Skycons.RAIN, //11 showers
+        Skycons.RAIN, //12 showers
+        Skycons.SNOW, //13 snow flurries
+        Skycons.SNOW, //14 light snow showers
+        Skycons.SNOW, //15 blowing snow
+        Skycons.SNOW, //16 snow
+        Skycons.SNOW, //17 hail
+        Skycons.SLEET, //18 sleet
+        Skycons.CLOUDY, //19 dust
+        Skycons.FOG, //20 foggy
+        Skycons.FOG, //21 haze
+        Skycons.CLOUDY, //22 smokey
+        Skycons.PARTLY_CLOUDY_NIGHT, //23 blustery
+        Skycons.WIND, //24 windy
+        Skycons.CLOUDY, //25 cold
+        Skycons.CLOUDY, //26 cloudy
+        Skycons.PARTLY_CLOUDY_NIGHT, //27 mostly cloudy night
+        Skycons.CLOUDY, //28 mostly cloudy day
+        Skycons.PARTLY_CLOUDY_NIGHT, //29 partly cloudy night
+        Skycons.CLOUDY, //30 partly cloudy day
+        Skycons.CLEAR_NIGHT, //31 clear night
+        Skycons.CLEAR_DAY, //32 sunny
+        Skycons.PARTLY_CLOUDY_DAY, //33 fair night
+        Skycons.PARTLY_CLOUDY_DAY, //34 fair day
+        Skycons.SLEET, //35 mixed rain and hail
+        Skycons.CLEAR_DAY, //36 hot
+        Skycons.CLOUDY, //37-39 various forms of Tstorms
+        Skycons.CLOUDY,
+        Skycons.CLOUDY, //39
+        Skycons.RAIN, //40 scattered showers
+        Skycons.SNOW, //41 heavy snow
+        Skycons.SNOW, //42 scattered snow showers
+        Skycons.SNOW, //43 heavy snow
+        Skycons.PARTLY_CLOUDY_DAY, //44 partly cloudy
+        Skycons.CLOUDY, //45 thundershowers
+        Skycons.SNOW, //46 snow showers
+        Skycons.CLOUDY //47 isolated thundershowers
     ]
 
 var weekday = new Array(7);
