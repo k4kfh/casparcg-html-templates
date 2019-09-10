@@ -124,21 +124,21 @@ skyconMap = [ //matches codes from Yahoo weather to Skycons
         Skycons.WIND, //0 tornado
         Skycons.WIND, //1 tropical storm
         Skycons.WIND, //2 hurricane
-        Skycons.CLOUDY, //3 severe thunderstorms
-        Skycons.CLOUDY, //4 thunderstorms
-        Skycons.SNOW, //5 mixed rain and snow
+        Skycons.THUNDER, //3 severe thunderstorms
+        Skycons.THUNDER, //4 thunderstorms
+        Skycons.RAIN_SNOW, //5 mixed rain and snow
         Skycons.SLEET, //6 mixed rain and sleet
         Skycons.SLEET, //7 mixed snow and sleet
         Skycons.SLEET, //8 freezing drizzle
         Skycons.RAIN, //9 drizzle
         Skycons.SLEET, //10 freezing rain
-        Skycons.RAIN, //11 showers
-        Skycons.RAIN, //12 showers
+        Skycons.SHOWERS_DAY, //11 showers
+        Skycons.SHOWERS_DAY, //12 showers
         Skycons.SNOW, //13 snow flurries
         Skycons.SNOW, //14 light snow showers
         Skycons.SNOW, //15 blowing snow
         Skycons.SNOW, //16 snow
-        Skycons.SNOW, //17 hail
+        Skycons.HAIL, //17 hail
         Skycons.SLEET, //18 sleet
         Skycons.CLOUDY, //19 dust
         Skycons.FOG, //20 foggy
@@ -151,7 +151,7 @@ skyconMap = [ //matches codes from Yahoo weather to Skycons
         Skycons.PARTLY_CLOUDY_NIGHT, //27 mostly cloudy night
         Skycons.CLOUDY, //28 mostly cloudy day
         Skycons.PARTLY_CLOUDY_NIGHT, //29 partly cloudy night
-        Skycons.CLOUDY, //30 partly cloudy day
+        Skycons.PARTLY_CLOUDY_DAY, //30 partly cloudy day
         Skycons.CLEAR_NIGHT, //31 clear night
         Skycons.CLEAR_DAY, //32 sunny
         Skycons.PARTLY_CLOUDY_DAY, //33 fair night
@@ -161,14 +161,14 @@ skyconMap = [ //matches codes from Yahoo weather to Skycons
         Skycons.CLOUDY, //37-39 various forms of Tstorms
         Skycons.CLOUDY,
         Skycons.CLOUDY, //39
-        Skycons.RAIN, //40 scattered showers
+        Skycons.SHOWERS_DAY, //40 scattered showers
         Skycons.SNOW, //41 heavy snow
-        Skycons.SNOW, //42 scattered snow showers
+        Skycons.SNOW_SHOWERS_DAY, //42 scattered snow showers
         Skycons.SNOW, //43 heavy snow
         Skycons.PARTLY_CLOUDY_DAY, //44 partly cloudy
-        Skycons.CLOUDY, //45 thundershowers
-        Skycons.SNOW, //46 snow showers
-        Skycons.CLOUDY //47 isolated thundershowers
+        Skycons.THUNDER_RAIN, //45 thundershowers
+        Skycons.SNOW_SHOWERS_DAY, //46 snow showers
+        Skycons.THUNDER_SHOWERS_DAY //47 isolated thundershowers
     ]
 
 var weekday = new Array(7);
