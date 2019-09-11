@@ -1,68 +1,59 @@
-function play(arg) {
-    
-}
-
-function stop() {
-    
-}
-
-function next() {
-    
-}
-
-var json;
-var skycons;
-function update(arg) {
-skycons = new Skycons({"monochrome": false});
-
-skycons.play();
-
-    json = JSON.parse(arg);
-    weather.zipcode = json.zipcode;
-    weather.fetch(json.zipcode)
-}
-
 weather = {
     zipcode : undefined,
     fetch : function(arg_location) {
-/*        $.simpleWeather(
+        $.simpleWeather(
             {
                 location: arg_location,
                 unit: 'f',
                 success: function(weather) {
                     //run if we successfully fetch the weather
-                    console.dir(weather) */
-                    
-                    //for (var i = 0; i<weather.forecast.length; i++) {
-                    for (var i = 0; i<7; i++) {
-                        //$("#day" + (i+1) + " .day-title").html(weather.forecast[i].day) //set the name of the day
-                        
-                        //var code = Number(weather.forecast[i].code); //use the Yahoo weather code to pick an image
-                        var code = Number(Math.floor(Math.random() * 47)); //use the Yahoo weather code to pick an image
-                        
-                        skycons.set($("#day" + (i+1) + " canvas").get(0), skyconMap[code]);
-                        
-                        //fetch temps
-                        //$("#day" + (i+1) + " .temp-high").html(Number(weather.forecast[i].high));
-                        //$("#day" + (i+1) + " .temp-low").html(Number(weather.forecast[i].low));
-                        $("#day" + (i+1) + " .temp-high").html(Number(Math.floor(Math.random() * 35)));
-                        $("#day" + (i+1) + " .temp-low").html(Number(Math.floor(Math.random() * 15)));
-                    }
-                    
-                    //wait for the images to load, then begin the animating in
-                    setTimeout(
-                        function(){
-                            $("#day1").fadeTo("slow", 1);
-                            $("#day2").delay(400).fadeTo("slow", 1);
-                            $("#day3").delay(800).fadeTo("slow", 1);
-                            $("#day4").delay(1200).fadeTo("slow", 1);
-                            $("#day5").delay(1600).fadeTo("slow", 1);
-                            $("#day6").delay(2000).fadeTo("slow", 1);
-                            $("#day7").delay(2400).fadeTo("slow", 1);
-                    }, 100)
-/*                }
+                    console.dir(weather);
+
+                    this.display(weather);
+                }
+
             }
-        ) */
+
+        )
+    },
+    display : function(weather) {
+        for (var i = 0; i<weather.forecast.length; i++) {
+            $("#day" + (i+1) + " .day-title").html(weather.forecast[i].day) //set the name of the day
+
+            var code = Number(weather.forecast[i].code); //use the Yahoo weather code to pick an image
+            skycons.set($("#day" + (i+1) + " canvas").get(0), skyconMap[code]);
+
+            //fetch temps
+            $("#day" + (i+1) + " .temp-high").html(Number(weather.forecast[i].high));
+            $("#day" + (i+1) + " .temp-low").html(Number(weather.forecast[i].low));
+        }
+
+        //wait for the images to load, then begin the animating in
+        setTimeout(
+            function(){
+                $("#day1").fadeTo("slow", 1);
+                $("#day2").delay(400).fadeTo("slow", 1);
+                $("#day3").delay(800).fadeTo("slow", 1);
+                $("#day4").delay(1200).fadeTo("slow", 1);
+                $("#day5").delay(1600).fadeTo("slow", 1);
+                $("#day6").delay(2000).fadeTo("slow", 1);
+                $("#day7").delay(2400).fadeTo("slow", 1);
+            }, 100)
+    },
+    demo : function() {
+        var dummyData = {forecast: []};
+
+        for (var i = 0; i<7; i++) {
+            dummyData.forecast.push({
+                 day: weekdayShort[(i+1) % 7],
+                 code: Math.floor(Math.random() * skyconMap.length),
+                 high: Math.floor(Math.random() * 35),
+                 low: Math.floor(Math.random() * 15)
+            });
+        }
+
+
+        this.display(dummyData);
     },
 }
 
@@ -88,6 +79,7 @@ skyconMap = [ //matches codes from Yahoo weather to Skycons
         Skycons.SLEET, //18 sleet
         Skycons.CLOUDY, //19 dust
         Skycons.FOG, //20 foggy
+
         Skycons.FOG, //21 haze
         Skycons.CLOUDY, //22 smokey
         Skycons.PARTLY_CLOUDY_NIGHT, //23 blustery
@@ -127,10 +119,33 @@ weekday[5] = "Friday";
 weekday[6] = "Saturday";
 
 var weekdayShort = new Array(7);
-weekdayShort[0] =  "Sun";
+weekdayShort[0] = "Sun";
 weekdayShort[1] = "Mon";
 weekdayShort[2] = "Tue";
 weekdayShort[3] = "Wed";
-weekdayShort[4] = "Thur";
+weekdayShort[4] = "Thu";
 weekdayShort[5] = "Fri";
 weekdayShort[6] = "Sat";
+
+function play(arg) {
+}
+
+function stop() {
+}
+
+function next() {
+}
+
+var skycons;
+function update(arg) {
+    skycons = new Skycons({"monochrome": false});
+    skycons.play();
+
+    var json = JSON.parse(arg);
+    weather.zipcode = json.zipcode;
+    if (window.location.hash === "#demo") {
+        weather.demo();
+    } else {
+        weather.fetch(json.zipcode);
+    }
+}
